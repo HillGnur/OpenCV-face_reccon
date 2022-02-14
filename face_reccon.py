@@ -12,23 +12,23 @@ recogniser = face_reccon.FaceDetection()
 draw = mp.solutions.drawing_utils
 
 while True:
-    #Read cam info
+    #---Read cam info
     verifier, frame = cam.read()
     if not verifier:
         break
     
-    #Reccon faces
+    #--Reccon faces
     list_faces = recogniser.process(frame)
 
     if list_faces.detections:
         for face in list_faces.detections:
-            #Draw on images
+            #---Draw on images
             draw.draw_detection(frame, face)
         
-    #Show cam image
+    #--Show cam image
     cv2.imshow("Faces on cam", frame)
 
-    #Press Esc (key 27) to stop, and add a timer on image showing
+    #--Press Esc (key 27) to stop, and add a timer on image showing
     if cv2.waitKey(5) == 27:
         break
 
